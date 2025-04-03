@@ -67,7 +67,7 @@ async def on_message(message):
     # Append the new note with a timestamp header
     note_content = message.content
     with open(file_path, "a", encoding="utf-8") as f:
-        f.write(f"{note_content}\n\n")
+        f.write(f"{note_content}\n")
 
     # Optionally, send a confirmation message back to the channel
     await message.channel.send("Note appended to today's file!")
