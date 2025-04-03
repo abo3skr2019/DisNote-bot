@@ -15,6 +15,8 @@ if BASE_DIR is None:
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+# Cache to store already created files for the current session
+created_files = {}
 
 @client.event
 async def on_ready():
@@ -48,21 +50,23 @@ async def on_message(message):
     file_name = f"{date_str}-{weekday}.md"
     file_path = os.path.join(month_dir, file_name)
 
-    # If the file does not exist yet, create it with the template
-    if not os.path.exists(file_path):
-        if os.path.exists(template_dir):        
-            # Read the template content and replace the date placeholder
-            with open(template_dir, "r", encoding="utf-8") as f:
-                template_content = f.read()
-            
-            # Replace the date placeholders
-            current_date = now.strftime("%Y-%m-%d %H:%M:%S")
-            template_content = template_content.replace("<%tp.file.creation_date()%>", current_date)
-            template_content = template_content.replace("<%tp.date.now(\"YYYY-MM-DD\")%>", date_str)
-            
-            # Write the modified template back to the file
-            with open(file_path, "w", encoding="utf-8") as f:
-                f.write(template_content)
+    # Use the cache instead of checking the file system every time
+    if file_path not in created_files:
+        if not os.path.exists(file_path):
+            if os.path.exists(template_dir):        
+                # Read the template content and replace the date placeholder
+                with open(template_dir, "r", encoding="utf-8") as f:
+                    template_content = f.read()
+                
+                # Replace the date placeholders
+                current_date = now.strftime("%Y-%m-%d %H:%M:%S")
+                template_content = template_content.replace("<%tp.file.creation_date()%>", current_date)
+                template_content = template_content.replace("<%tp.date.now(\"YYYY-MM-DD\")%>", date_str)
+                
+                # Write the modified template back to the file
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(template_content)
+        created_files[file_path] = True
 
     # Append the new note with a timestamp header
     note_content = message.content
