@@ -50,15 +50,10 @@ async def on_message(message):
 
     # If the file does not exist yet, create it with the template
     if not os.path.exists(file_path):
-        print(f"Creating new file: {file_path}")
-        print(f"Template directory: {template_dir}")
         if os.path.exists(template_dir):        
-            print(f"Template file found: {template_dir}")
             # Read the template content and replace the date placeholder
             with open(template_dir, "r", encoding="utf-8") as f:
-                print("reading template file...")
                 template_content = f.read()
-                print(f"Template content: {template_content}")
             
             # Replace the date placeholders
             current_date = now.strftime("%Y-%m-%d %H:%M:%S")
