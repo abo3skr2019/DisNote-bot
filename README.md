@@ -1,6 +1,6 @@
 # DisNote Bot
 
-Did you ever need to jott something down real quick be it in a family gathering , work meeting ,etc and you don't have obsidian in your phone or it just doesn't sync right well i intoduce to you the DisNote bot it is A Discord bot that automatically saves messages from a specific channel into your daily Notes using your template, organizing them by year and month. Perfect for jotting down that quick note.
+Did you ever need to jott something down real quick be it in a family gathering , work meeting ,etc and you don't have obsidian in your phone! or it just doesn't sync right, well i intoduce to you the DisNote bot it is A Discord bot that automatically saves messages from a specific channel into your daily Notes using your template, organizing them by year and month. Perfect for jotting down that quick note.
 
 ## Features
 
@@ -69,3 +69,4 @@ The bot supports templates with the following placeholders:
 ## Roadmap
 - Support all Templatr shortcodes
 - Customize the File Structure
+- go rewrite ?
