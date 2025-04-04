@@ -70,5 +70,6 @@ The bot supports templates with the following placeholders:
 - Support all Templatr shortcodes
 - Customize the File Structure
 - go rewrite ?
+- Adding who the writer is if the writer isn't the Runner of the script
 - Exe CI/CD
   - Fix the whole not acutally working thing with the exes
