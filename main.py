@@ -56,7 +56,7 @@ async def on_message(message):
                 template_content = f.read()
             
             # Replace the date placeholders
-            current_date = now.strftime("%Y-%m-%d %H:%M:%S")
+            current_date = now.strftime("%Y-%m-%d %H:%M")
             template_content = template_content.replace("<% tp.file.creation_date() %>", current_date)
             template_content = template_content.replace("<%tp.date.now(\"YYYY-MM-DD\")%>", date_str)
             
