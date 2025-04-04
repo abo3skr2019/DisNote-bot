@@ -57,7 +57,7 @@ async def on_message(message):
             
             # Replace the date placeholders
             current_date = now.strftime("%Y-%m-%d %H:%M:%S")
-            template_content = template_content.replace("<%tp.file.creation_date()%>", current_date)
+            template_content = template_content.replace("<% tp.file.creation_date() %>", current_date)
             template_content = template_content.replace("<%tp.date.now(\"YYYY-MM-DD\")%>", date_str)
             
             # Write the modified template back to the file
@@ -71,6 +71,5 @@ async def on_message(message):
 
     # Optionally, send a confirmation message back to the channel
     await message.channel.send("Note appended to today's file!")
-
 # Start the bot
 client.run(TOKEN)
