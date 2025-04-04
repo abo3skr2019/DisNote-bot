@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "discord>=2.3.2",
+    "pyinstaller>=6.12.0",
 ]
